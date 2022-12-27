@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randomised</title>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+        }
+        grid{
+            margin-left: -17px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            padding: 10px;
+        }
+        img{
+            padding: 10px;
+            background-color: aqua;
+            width: 500px;
+            height: 500px;
+            object-fit: cover;
+            overflow: hidden;
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+    <script src="scrip.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <h2>Welcome to TallerThanShort's Algorithm Test.</h2>
+    <p>Select an image to choose which you like best. The chosen image will stay while the other will get replaced with a competitor. Once you reach the end of all possible options the images will stop changing.</p>
+    <grid>
+        <img id="op1" title="Option 1" src="https://s.mj.run/CUkFHS7YTMI">
+        <img id="op2" title="Option 2" src="https://media.discordapp.net/attachments/923589505653547011/1030076188535828521/V1RU5_a_beautiful_fantasy_miniature_empire_on_a_table_miniature_00eeff4a-d303-485e-aec0-438bcb4fa68d.png?format=webp">
+    </grid>
+    <div id="cookcons" style="display: none; width: 95%; height: 100%; align-items: center; flex-direction: column; justify-content: center; background-size: cover; background-position: center; color: black; position: absolute; top: 0px;">
+        <div style="text-align: center; padding: 48px 26px 24px;  background-color: white; overflow: visible; box-sizing: border-box; display: block;">
+            <h2>Cookie Consent</h2>
+            <p>To use this site, you must first accept the usage of Cookies.</p>
+            <p>The only Cookies used on this site are essential to maintain functionality.</p>
+            <p>This site, cannot, does not and will not ever track you for any reason.</p>
+            <p>To opt-out of Cookies on this site, discontinue use of this website.</p>
+            <button style="border: none; background-color: cyan; text-transform: uppercase; font-weight: 600; cursor: pointer;" onclick="acceptCookie()">Accept Cookies</button>
+        </div>
+    </div>
+</body>
+</html>
