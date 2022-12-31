@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scores</title>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+</head>
+<body>
+    <p>These scores are global, organised by highest (top) to lowest (bottom) scoring image.</p>
+    <script>
+        const firebaseConfig = {
+    apiKey: "AIzaSyA_-N3zwxB_ty-5fj37wIz-Dk6IeQl8T74",
+    authDomain: "ckschat-af6fb.firebaseapp.com",
+    databaseURL: "https://ckschat-af6fb.firebaseio.com",
+    projectId: "ckschat-af6fb",
+    storageBucket: "ckschat-af6fb.appspot.com",
+    messagingSenderId: "655383881512",
+    appId: "1:655383881512:web:171a4e7d857901e7bd521d",
+    measurementId: "G-852X7206HW"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+db.settings({ timestampsInSnapshots: true });
+
+db.collection('listItems').orderBy('score', 'desc').get().then((querySnaphot) => {
+    querySnaphot.forEach((doc) => {
+        document.body.innerHTML += `<br><p>${doc.data().score}</p><img style="width: 500px; height: 500px;" src="${doc.data().src}">`
+    })
+})
+    </script>
+</body>
+</html>
