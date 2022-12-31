@@ -1,9 +1,13 @@
 const one = "op1";
 const two = "op2";
 let officialArray = [];
-let emptyArray = []; 
-let nextItem = ''
-let numberd = 0
+let emptyArray = [];
+let numberd = 1
+
+// algorithm shit
+const K = 16;   // Constant that determines the importance of the match
+let Ra = 1400;    // Varaible for "element one"'s score
+let Rb = 1400;    // Varaible for "element one"'s score
 
 const firebaseConfig = {
     apiKey: "AIzaSyA_-N3zwxB_ty-5fj37wIz-Dk6IeQl8T74",
@@ -27,8 +31,8 @@ const randomiseData = (data) => {
     let tutal = 0;
     let list = [];
     data.forEach(doc => {
-        tutal++
         list[tutal] = `${doc.data().src}`;
+        tutal++
     });
     shuffle(list);
     setTimeout(function(){setupSite(list)}, 100);
@@ -52,13 +56,17 @@ const setupSite = (data) => {
     if(localStorage.getItem('cookie') != 'true'){
         document.getElementById("cookcons").style.display = 'flex';
     }
-    let tital = 0
-    data.forEach((div) => {
-        if(div != undefined){
-            tital++
+
+    if(data.length) {
+        let tital = 0
+        data.forEach((div) => {
             officialArray[tital] = div;
-        }
-    })
+            tital++
+        })
+    }
+
+    document.getElementById("op1").src = officialArray[0];
+    document.getElementById("op2").src = officialArray[1];
 }
 
 document.addEventListener("click", (e) => {
